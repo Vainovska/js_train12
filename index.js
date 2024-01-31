@@ -235,20 +235,19 @@ console.log(
  */
 function transformDictionary(dictionary) {
   // Створюємо порожні масиви для ключів (змінна keys), значень (змінна values) і пар ключ-значення (змінна entries)
-  const keys = [];
-  const values = [];
-  const enteries = [];
-  const arr = [];
+  let keys = [];
+  let values = [];
+  let enteries = [];
 
   // Використовуємо цикл for...of і метод keys для перебору ключів словника
-  for (const [key, value] of dictionary) {
+  for (let key of dictionary.keys()) {
     keys.push(key);
   }
-  for (const [key, value] of dictionary) {
+  for (let value of dictionary.values()) {
     values.push(value);
   }
-  for (const [key, value] of dictionary) {
-    enteries.push(dictionary.entries(key, value));
+  for (let entry of dictionary.entries()) {
+    enteries.push(entry);
   }
   // Додаємо кожен ключ до масиву keys за допомогою методу push
   // Використовуємо цикл for...of і метод values для перебору значень словника
@@ -256,8 +255,7 @@ function transformDictionary(dictionary) {
   // Використовуємо цикл for...of і метод entries для перебору пар ключ-значення словника
   // Додаємо кожну пару ключ-значення до масиву entries за допомогою методу push
   // Повертаємо об'єкт, який містить масиви ключів (властивість keys), значень (властивість values) і пар ключ-значення (властивість entries)
-  arr.push(keys, values, enteries);
-  return arr;
+  return { keys, values, enteries };
 }
 
 console.log("Завдання: 7 ==============================");
